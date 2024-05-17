@@ -34,7 +34,7 @@ function generateInvoice() {
                     <table>
                         <tr>
                             <td class="title">
-                                <img src="images/logo.png" alt="House moving logo" />
+                                <img src="logo.png" alt="House moving logo" />
                             </td>
                             <td class="details">
                                 ${gstIncluded ? 
