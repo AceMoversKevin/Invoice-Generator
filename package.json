@@ -1,0 +1,23 @@
+{
+  "name": "invoice-generator",
+  "version": "1.0.0",
+  "description": "Invoice Generator for ACE Movers",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^30.0.6",
+    "electron-builder": "^23.0.0"
+  },
+  "build": {
+    "appId": "com.acemovers.invoicegeneratoracemovers",
+    "win": {
+      "target": "portable"
+    }
+  }
+}
