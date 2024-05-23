@@ -25,15 +25,15 @@
                     </div>
                     <div class="form-group">
                         <label for="totalLaborTime">Total Work Hours:</label>
-                        <input type="number" step="0.01" class="form-control" id="totalLaborTime" name="totalLaborTime" required>
+                        <input type="number" step="1.00" class="form-control" id="totalLaborTime" name="totalLaborTime" required>
                     </div>
                     <div class="form-group">
                         <label for="calloutFee">Callout Fee (hours):</label>
-                        <input type="number" step="0.01" class="form-control" id="calloutFee" name="calloutFee" required>
+                        <input type="number" step="1.00" class="form-control" id="calloutFee" name="calloutFee" required>
                     </div>
                     <div class="form-group">
                         <label for="rate">Per Hour Rate:</label>
-                        <input type="number" step="0.01" class="form-control" id="rate" name="rate" required>
+                        <input type="number" step="10.00" class="form-control" id="rate" name="rate" required>
                     </div>
                     <div class="form-group">
                         <label for="gst">GST Included:</label>
@@ -44,19 +44,19 @@
                     </div>
                     <div class="form-group">
                         <label for="stairCharges">Stair Charge ($):</label>
-                        <input type="number" step="0.01" class="form-control" id="stairCharges" name="stairCharges">
+                        <input type="number" step="10.00" class="form-control" id="stairCharges" name="stairCharges">
                     </div>
                     <div class="form-group">
                         <label for="pianoCharge">Piano Charge (hours):</label>
-                        <input type="number" step="0.01" class="form-control" id="pianoCharge" name="pianoCharge">
+                        <input type="number" step="1.00" class="form-control" id="pianoCharge" name="pianoCharge">
                     </div>
                     <div class="form-group">
                         <label for="poolTableCharge">Pool Table Charge (hours):</label>
-                        <input type="number" step="0.01" class="form-control" id="poolTableCharge" name="poolTableCharge">
+                        <input type="number" step="1.00" class="form-control" id="poolTableCharge" name="poolTableCharge">
                     </div>
                     <div class="form-group">
                         <label for="deposit">Initial Deposit ($):</label>
-                        <input type="number" step="0.01" class="form-control" id="deposit" name="deposit" required>
+                        <input type="number" step="10.00" class="form-control" id="deposit" name="deposit" required>
                     </div>
                     <button type="button" class="btn btn-primary" onclick="generateInvoice()">Generate Invoice</button>
                 </form>

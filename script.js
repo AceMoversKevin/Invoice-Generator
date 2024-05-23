@@ -1,3 +1,36 @@
+const fs = require('fs');
+const path = require('path');
+
+const dataFilePath = path.join(__dirname, 'invoiceNumber.txt');
+
+// Read the current invoice number
+function getCurrentInvoiceNumber() {
+    try {
+        const data = fs.readFileSync(dataFilePath, 'utf8');
+        return parseInt(data, 10);
+    } catch (err) {
+        console.error('Error reading invoice number file:', err);
+        return null;
+    }
+}
+
+// Increment and update the invoice number
+function incrementInvoiceNumber() {
+    try {
+        let currentInvoiceNumber = getCurrentInvoiceNumber();
+        if (currentInvoiceNumber === null) {
+            currentInvoiceNumber = 1000;
+        }
+        const newInvoiceNumber = currentInvoiceNumber + 1;
+        fs.writeFileSync(dataFilePath, newInvoiceNumber.toString(), 'utf8');
+        return newInvoiceNumber;
+    } catch (err) {
+        console.error('Error updating invoice number file:', err);
+        return null;
+    }
+}
+
+
 function calculateSubTotal(totalLaborTime, pianoCharge, poolTableCharge, rate, calloutFee) {
     return (totalLaborTime + pianoCharge + poolTableCharge + calloutFee) * rate;
 }
@@ -26,6 +59,7 @@ function generateInvoice() {
     const surcharge = gstIncluded ? subTotal * 0.10 : 0;
     const hasAdditionalCharges = stairCharges !== 0 || pianoCharge !== 0 || poolTableCharge !== 0;
     const totalCharge = subTotal + surcharge - deposit + stairCharges;
+    const invoiceNumber = incrementInvoiceNumber(); // Generate the new invoice number
 
     const invoiceHTML = `
         <table>
@@ -37,12 +71,12 @@ function generateInvoice() {
                                 <img src="logo.png" alt="House moving logo" />
                             </td>
                             <td class="details">
-                                ${gstIncluded ? 
-                                    `<b>INVOICE</b><br />
-                                    Moving Service` : 
-                                    `<b>Payment Overview</b><br />
+                                ${gstIncluded ?
+            `<b>INVOICE</b><br />
+                                    Moving Service` :
+            `<b>Payment Overview</b><br />
                                     Moving Service`
-                                }
+        }
                             </td>
                         </tr>
                     </table>
@@ -54,11 +88,14 @@ function generateInvoice() {
                         <tr>
                             <td>
                                 ACE MOVERS PTY LTD.<br />
-                                ACN:640 368 930
+                                ACN:640 368 930 <br />
+                                ABN:346 4036 8930 <br />
+                                Contact: 1300-136-735
                             </td>
                             <td>
                                 Client Name: ${clientName}<br />
-                                Email: ${clientEmail}
+                                Email: ${clientEmail}<br />
+                                Invoice Number: ${invoiceNumber}
                             </td>
                         </tr>
                     </table>
